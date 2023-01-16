@@ -4,8 +4,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <h5 class="card-header">Form User</h5>
-
+                <h5 class="card-header">{{ $title }}</h5>
+                
                 <div class="card-body">
                     {!! Form::model($model, ['route' => $route, 'method' => $method]) !!}
                         <div class="form-group">
@@ -23,20 +23,36 @@
                             {!! Form::text('nohp', null, ['class' => 'form-control', 'autofocus']) !!}
                             <span class="text-danger">{{ $errors->first('nohp') }}</span>
                         </div>
-                        <div class="form-group mt-3">
-                            <lable for="akses">Hak Akses</lable>
-                            {!! Form::select(
-                                'akses', 
-                                [
-                                    'operator' => 'Operator',
-                                    'admin' => 'Administrator',
-                                    'wali' => 'Wali Murid'
-                                ], 
-                                null, 
-                                ['class' => 'form-control']) 
-                            !!}
-                            <span class="text-danger">{{ $errors->first('akses') }}</span>
-                        </div>
+                        @if (\Route::is('user.create'))
+                            <div class="form-group mt-3">
+                                <lable for="akses">Hak Akses</lable>
+                                {!! Form::select(
+                                    'akses', 
+                                    [
+                                        'operator' => 'Operator',
+                                        'admin' => 'Administrator'
+                                    ], 
+                                    null, 
+                                    ['class' => 'form-control']) 
+                                !!}
+                                <span class="text-danger">{{ $errors->first('akses') }}</span>
+                            </div>
+                        @elseif(\Route::is('user.edit'))
+                            <div class="form-group mt-3">
+                                <lable for="akses">Hak Akses</lable>
+                                {!! Form::select(
+                                    'akses', 
+                                    [
+                                        'operator' => 'Operator',
+                                        'admin' => 'Administrator'
+                                    ], 
+                                    null, 
+                                    ['class' => 'form-control']) 
+                                !!}
+                                <span class="text-danger">{{ $errors->first('akses') }}</span>
+                            </div>
+                        @endif
+                        
                         <div class="form-group mt-3">
                             <lable for="password">Password</lable>
                             {!! Form::password('password', ['class' => 'form-control']) !!}

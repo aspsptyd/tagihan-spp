@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User as Model;
 
-class UserController extends Controller
+class WaliController extends Controller
 {
     private $viewIndex = 'user_index';
     private $viewCreate = 'user_form';
     private $viewEdit = 'user_form';
-    private $routePrefix = 'user';
+    private $routePrefix = 'wali';
 
-    private $accessClass = 'Data User';
+    private $accessClass = 'Data Wali Murid';
     
     /**
      * Display a listing of the resource.
@@ -22,11 +22,11 @@ class UserController extends Controller
     public function index()
     {
         return view('operator.' . $this->viewIndex, [
-            'models' => Model::where('akses', '<>', 'wali')->where('akses', '<>', '-')
+            'models' => Model::where('akses', 'wali')->where('akses', '<>', '-')
                 ->latest()
                 ->paginate(50),
-            'routePrefix' => $this->routePrefix,
-            'title' => $this->accessClass
+                'routePrefix' => $this->routePrefix,
+                'title' => $this->accessClass
         ]);
     }
 
@@ -59,10 +59,10 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users',
             'nohp' => 'required|unique:users',
-            'akses' => 'required|in:operator,admin,wali',
             'password' => 'required'
         ]);
         $requestData['password'] = bcrypt($requestData['password']);
+        $requestData['akses'] = 'wali';
 
         Model::create($requestData);
         flash('Data berhasil disimpan');
@@ -111,7 +111,6 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email,' . $id,
             'nohp' => 'required|unique:users,nohp,' . $id,
-            'akses' => 'required|in:operator,admin,wali',
             'password' => 'nullable'
         ]);
         $model = Model::findOrFail($id);
@@ -120,6 +119,8 @@ class UserController extends Controller
         } else {
             $requestData['password'] = bcrypt($requestData['password']);
         }
+        $requestData['akses'] = 'wali';
+        
         $model->fill($requestData);
         $model->save();
 
