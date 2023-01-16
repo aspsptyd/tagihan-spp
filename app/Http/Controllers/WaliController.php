@@ -120,7 +120,7 @@ class WaliController extends Controller
             $requestData['password'] = bcrypt($requestData['password']);
         }
         $requestData['akses'] = 'wali';
-        
+
         $model->fill($requestData);
         $model->save();
 
@@ -136,12 +136,7 @@ class WaliController extends Controller
      */
     public function destroy($id)
     {
-        $model = Model::findOrFail($id);
-
-        if ($model->email == 'admin@sekolah.com') {
-            flash('Data tidak bisa dihapus, karena data Administrator')->error();
-            return back();
-        }
+        $model = Model::where('akses', 'wali')->findOrFail($id);
 
         $model->delete();
         flash('Data berhasil dihapus');
