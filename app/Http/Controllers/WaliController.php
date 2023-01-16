@@ -136,7 +136,7 @@ class WaliController extends Controller
      */
     public function destroy($id)
     {
-        $model = Model::where('akses', 'wali')->findOrFail($id);
+        $model = Model::where('akses', 'wali')->firstOrFail();
 
         $model->delete();
         flash('Data berhasil dihapus');
