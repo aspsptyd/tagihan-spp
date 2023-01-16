@@ -151,21 +151,21 @@
 
             <li class="menu-item {{ \Route::is('user.*') ? 'active' : '' }}">
               <a href="{{ route('user.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <i class="menu-icon tf-icons bx bx-box"></i>
                 <div data-i18n="Basic">Data User</div>
               </a>
             </li>
 
             <li class="menu-item {{ \Route::is('wali.*') ? 'active' : '' }}">
               <a href="{{ route('wali.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <i class="menu-icon tf-icons bx bx-box"></i>
                 <div data-i18n="Basic">Data Wali Murid</div>
               </a>
             </li>
 
             <li class="menu-item">
               <a href="{{ route('logout') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>  
                 <div data-i18n="Basic">Logout</div>
               </a>
             </li>
