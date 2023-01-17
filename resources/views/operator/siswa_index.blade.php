@@ -25,15 +25,19 @@
                                 @forelse ($models as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->wali->name }}</td>
+                                        @if ($item->wali->name == "Belum ada wali murid")
+                                            <td style="color: red"><b>{{ $item->wali->name }}</b></td>
+                                        @else 
+                                            <td>{{ $item->wali->name }}</td>
+                                        @endif
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->nisn }}</td>
                                         <td>{{ $item->jurusan }}</td>
                                         <td>{{ $item->kelas }}</td>
                                         <td>
-                                            <a href="{{ route($routePrefix . '.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Edit</a>
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Hapus</button>
-                                            <a href="{{ route($routePrefix . '.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-user"></i>Show</a>
+                                            <a href="{{ route($routePrefix . '.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&emsp;Edit</a>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&emsp;Hapus</button>
+                                            <a href="{{ route($routePrefix . '.show', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-user"></i>&emsp;Details</a>
                                         </td>
                                     </tr>
                                 @empty

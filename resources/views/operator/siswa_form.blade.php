@@ -7,56 +7,49 @@
                 <h5 class="card-header">{{ $title }}</h5>
                 
                 <div class="card-body">
-                    {!! Form::model($model, ['route' => $route, 'method' => $method]) !!}
+                    {!! Form::model($model, ['route' => $route, 'method' => $method, 'files' => true]) !!}
                         <div class="form-group">
-                            <lable for="name">Nama</lable>
-                            {!! Form::text('name', null, ['class' => 'form-control', 'autofocus']) !!}
-                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                            <lable for="wali_id">Wali Murid (optional)</lable>
+                            {{ Form::select('wali_id', $wali, null, ['class' => 'form-control select2', 'placeholder' => 'Pilih Wali Murid']) }}
+                            <span class="text-danger">{{ $errors->first('wali_id') }}</span>
                         </div>
                         <div class="form-group mt-3">
-                            <lable for="email">Email</lable>
-                            {!! Form::text('email', null, ['class' => 'form-control', 'autofocus']) !!}
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                            <lable for="nama">Nama Siswa</lable>
+                            {!! Form::text('nama', null, ['class' => 'form-control', 'autofocus']) !!}
+                            <span class="text-danger">{{ $errors->first('nama') }}</span>
                         </div>
                         <div class="form-group mt-3">
-                            <lable for="nohp">No. HP</lable>
-                            {!! Form::text('nohp', null, ['class' => 'form-control', 'autofocus']) !!}
-                            <span class="text-danger">{{ $errors->first('nohp') }}</span>
+                            <lable for="nisn">NISN</lable>
+                            {!! Form::text('nisn', null, ['class' => 'form-control', 'autofocus']) !!}
+                            <span class="text-danger">{{ $errors->first('nisn') }}</span>
                         </div>
-                        @if (\Route::is('user.create'))
-                            <div class="form-group mt-3">
-                                <lable for="akses">Hak Akses</lable>
-                                {!! Form::select(
-                                    'akses', 
-                                    [
-                                        'operator' => 'Operator',
-                                        'admin' => 'Administrator'
-                                    ], 
-                                    null, 
-                                    ['class' => 'form-control']) 
-                                !!}
-                                <span class="text-danger">{{ $errors->first('akses') }}</span>
-                            </div>
-                        @elseif(\Route::is('user.edit'))
-                            <div class="form-group mt-3">
-                                <lable for="akses">Hak Akses</lable>
-                                {!! Form::select(
-                                    'akses', 
-                                    [
-                                        'operator' => 'Operator',
-                                        'admin' => 'Administrator'
-                                    ], 
-                                    null, 
-                                    ['class' => 'form-control']) 
-                                !!}
-                                <span class="text-danger">{{ $errors->first('akses') }}</span>
-                            </div>
-                        @endif
-                        
                         <div class="form-group mt-3">
-                            <lable for="password">Password</lable>
-                            {!! Form::password('password', ['class' => 'form-control']) !!}
-                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                            <lable for="jurusan">Pilih Jurusan</lable>
+                            {!! Form::select(
+                                'jurusan', [
+                                'RPL' => 'Rekayasa Perangkat Lunak',
+                                'AP' => 'Aplikasi Perkantoran',
+                                'TKJ' => 'Teknik Komputer & Jaringan',
+                                ],
+                                null,
+                                ['class' => 'form-control', 'placeholder' => 'Pilih Jurusan']
+                            ) !!}
+                            <span class="text-danger">{{ $errors->first('nisn') }}</span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <lable for="kelas">Pilih Kelas</lable>
+                            {!! Form::selectRange('kelas', 1, 12, null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Pilih Kelas']) !!}
+                            <span class="text-danger">{{ $errors->first('kelas') }}</span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <lable for="angkatan">Angkatan Ke-</lable>
+                            {!! Form::selectRange('angkatan', 2022, date('Y') + 1, null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Pilih Angkatan']) !!}
+                            <span class="text-danger">{{ $errors->first('angkatan') }}</span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <lable for="foto">Photo <b>(Format:jpg, jpeg, png, Ukuran Maks: 5MB)</b></lable>
+                            {{ Form::file('foto', ['class' => 'form-control', 'accept' => 'image/*']) }}
+                            <span class="text-danger">{{ $errors->first('foto') }}</span>
                         </div>
                     {!! Form::submit($button, ['class' => 'btn btn-primary mt-3']) !!}
                     {!! Form::close() !!}

@@ -35,8 +35,8 @@
                                                 'onsubmit' => 'return confirm("Yakin ingin menghapus data ini?")'
                                             ]) !!}
     
-                                            <a href="{{ route($routePrefix . '.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Edit</a>
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Hapus</button>
+                                            <a href="{{ route($routePrefix . '.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&emsp;Edit</a>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&emsp;Hapus</button>
                                             {!! Form::close() !!}
                                         </td>
                                         
