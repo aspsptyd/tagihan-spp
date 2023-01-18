@@ -6,7 +6,7 @@
     <!-- Content -->
 
     <div>
-        <h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">{{ $access_menu }} /</span> {{ $title }}</h4>
+        <h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light"> Home / </span><span class="text-muted fw-light">{{ $access_menu }} /</span> {{ $title }}</h4>
 
         <div class="row">
             <div class="col-xl-2">
@@ -14,6 +14,18 @@
                 <div class="card">
                 <div class="card-body">
                     <img src="{{ \Storage::url($model->foto ?? 'images/no-image.png') }}" width="165"/>
+                    <h5 class="mt-4" style="text-align: center">{{ $model->nama }}</h5>
+
+                    <center>
+                        <div class="small-ratings align-items-center">
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star rating-color"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <h6 class="mt-2">Ranking 5</h6>
+                    </center>
                 </div>
                 </div>
             </div>
@@ -42,12 +54,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-xl-2">
-            </div>
-        
-            <div class="col-md-10">
                 <h5>Data Wali Murid</h5>
                 <div class="card mb-4">
                     <div class="card-body">

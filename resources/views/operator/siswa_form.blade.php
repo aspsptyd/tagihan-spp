@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="row justify-content-center">
+        
+        <h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">Home / </span><span class="text-muted fw-light"> Data Siswa / </span> {{ $title }}</h4>
+
         <div class="col-md-12">
             <div class="card">
-                <h5 class="card-header">{{ $title }}</h5>
-                
                 <div class="card-body">
                     {!! Form::model($model, ['route' => $route, 'method' => $method, 'files' => true]) !!}
                         <div class="form-group">

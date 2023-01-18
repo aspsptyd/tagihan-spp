@@ -38,7 +38,7 @@ Route::get('logout', function () {
 })->name('logout');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Auth::routes();
