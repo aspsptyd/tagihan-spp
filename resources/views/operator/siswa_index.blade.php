@@ -2,13 +2,15 @@
 
 @section('content')
     <div class="row justify-content-center">
+        
+        <h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">Home /</span> {{ $title }}</h4>
+
         <div class="col-md-12">
             <div class="card">
-                <h5 class="card-header">{{ $title }}</h5>
-
+        
                 <div class="card-body">
                     <a href="{{ route($routePrefix . '.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
-                    <div class="table-responsive">
+                    <div class="table-responsive mt-4">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -19,7 +21,7 @@
                                     <th>Jurusan</th>
                                     <th>Kelas</th>
                                     <th>Angkatan</th>
-                                    <th>Aksi</th>
+                                    <th style="text-align: center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,7 +38,7 @@
                                         <td>{{ $item->jurusan }}</td>
                                         <td>{{ $item->kelas }}</td>
                                         <td>{{ $item->angkatan . '/' . $item->angkatan + 1 }}</td>
-                                        <td>
+                                        <td style="text-align: center">
                                             {!! Form::open([
                                                 'route' => [ $routePrefix . '.destroy', $item->id],
                                                 'method' => 'DELETE',
@@ -58,6 +60,7 @@
                         {!! $models->links() !!}
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

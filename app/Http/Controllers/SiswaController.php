@@ -71,7 +71,8 @@ class SiswaController extends Controller
     {
         return view('operator.' . $this->viewShow, [
             'model' => ModelSiswa::find($id),
-            'title' => 'Detail Siswa'
+            'title' => 'Detail Siswa',
+            'access_menu' => $this->accessClass
         ]);
     }
 
