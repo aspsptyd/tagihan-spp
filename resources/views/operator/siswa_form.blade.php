@@ -46,11 +46,14 @@
                             {!! Form::selectRange('angkatan', 2022, date('Y') + 1, null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Pilih Angkatan']) !!}
                             <span class="text-danger">{{ $errors->first('angkatan') }}</span>
                         </div>
-                        <div class="form-group mt-3">
+                        <div class="form-group mt-3 mb-3">
                             <lable for="foto">Photo <b>(Format:jpg, jpeg, png, Ukuran Maks: 5MB)</b></lable>
                             {{ Form::file('foto', ['class' => 'form-control', 'accept' => 'image/*']) }}
                             <span class="text-danger">{{ $errors->first('foto') }}</span>
                         </div>
+                        @if ($model->foto != null) 
+                            <img src="{{ \Storage::url($model->foto) }}" alt="" width="200" class="img-thumbnail"/>
+                        @endif
                     {!! Form::submit($button, ['class' => 'btn btn-primary mt-3']) !!}
                     {!! Form::close() !!}
                 </div>

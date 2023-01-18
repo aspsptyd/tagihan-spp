@@ -135,7 +135,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $model = Model::findOrFail($id);
+        $model = Model::find($id);
 
         if ($model->email == 'admin@sekolah.com') {
             flash('Data tidak bisa dihapus, karena data Administrator')->error();
