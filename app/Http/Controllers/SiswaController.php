@@ -20,9 +20,9 @@ class SiswaController extends Controller
     public function index(Request $request)
     {
         if  ($request->filled('q')) {
-            $models = ModelSiswa::search($request->q)->paginate(50);
+            $models = ModelSiswa::search($request->q)->paginate(10);
         } else {
-            $models = ModelSiswa::latest()->paginate(50);
+            $models = ModelSiswa::latest()->paginate(10);
         }
 
         return view('operator.' . $this->viewIndex, [
