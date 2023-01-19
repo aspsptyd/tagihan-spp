@@ -17,11 +17,16 @@ class SiswaController extends Controller
 
     private $accessClass = 'Data Siswa';
     
-    public function index()
+    public function index(Request $request)
     {
+        if  ($request->filled('q')) {
+            $models = ModelSiswa::search($request->q)->paginate(50);
+        } else {
+            $models = ModelSiswa::latest()->paginate(50);
+        }
+
         return view('operator.' . $this->viewIndex, [
-            'models' => ModelSiswa::latest()
-                ->paginate(50),
+            'models' => $models,
             'routePrefix' => $this->routePrefix,
             'title' => $this->accessClass
         ]);

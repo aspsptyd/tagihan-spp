@@ -16,6 +16,10 @@
                     <img src="{{ \Storage::url($model->foto ?? 'images/no-image.png') }}" width="165"/>
                     <h5 class="mt-4" style="text-align: center">{{ $model->nama }}</h5>
 
+                    <div class="divider">
+                        <div class="divider-text">Prestasi</div>
+                    </div>
+
                     <center>
                         <div class="small-ratings align-items-center">
                             <i class="fa fa-star rating-color"></i>
@@ -44,7 +48,7 @@
                                         <td>Nama Lengkap</td><td style="text-align: center">:</td><td>{{ $model->nama }}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. Induk Sekolah Nasional</td><td style="text-align: center; vertical-align: middle">:</td><td>{{ $model->nisn }}</td>
+                                        <td>No. Induk Sekolah Nasional</td><td style="text-align: center; vertical-align: middle">:</td><td>{{ $model->nisn}}</td>
                                     </tr>
                                     <tr>
                                         <td>Kelas / Jurusan</td><td style="text-align: center; vertical-align: middle">:</td><td>{{ $model->kelas . ' - ' . $model->jurusan . ' - ' . $model->angkatan . '/' . $model->angkatan + 1}}</td>
@@ -64,10 +68,10 @@
                                         <td width="26%">Nama Wali / Orang Tua</td><td style="text-align: center">:</td><td>{{ $model->wali->name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Email</td><td style="text-align: center">:</td><td>{{ $model->wali->email }}</td>
+                                        <td>Email</td><td style="text-align: center">:</td><td>{{ $model->wali->email ?? '-' }}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. HP</td><td style="text-align: center">:</td><td>{{ $model->wali->nohp }}</td>
+                                        <td>No. HP</td><td style="text-align: center">:</td><td>{{ $model->wali->nohp ?? '-' }}</td>
                                     </tr>
                                 </thead>
                             </table>
