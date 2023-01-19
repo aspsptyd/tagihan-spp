@@ -13,7 +13,7 @@
                 <!-- File input -->
                 <div class="card">
                 <div class="card-body">
-                    <img src="{{ \Storage::url($model->foto ?? 'images/no-image.png') }}" width="165"/>
+                    <img src="{{ \Storage::url($model->foto ?? 'images/man.png') }}" width="165"/>
                     <h5 class="mt-4" style="text-align: center">{{ $model->nama }}</h5>
 
                     <div class="divider">
@@ -35,7 +35,7 @@
             </div>
         
             <div class="col-md-10">
-                <h5>Biodata Siswa</h5>
+                <h5>Informasi Siswa</h5>
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="form-floating">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <h5>Data Wali Murid</h5>
+                <h5>Wali Murid / Orang Tua</h5>
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="form-floating">
