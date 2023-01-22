@@ -10,6 +10,7 @@ class WaliController extends Controller
     private $viewIndex = 'user_index';
     private $viewCreate = 'user_form';
     private $viewEdit = 'user_form';
+    private $viewShow = 'user_show';
     private $routePrefix = 'wali';
 
     private $accessClass = 'Data Wali Murid';
@@ -22,7 +23,7 @@ class WaliController extends Controller
     public function index()
     {
         return view('operator.' . $this->viewIndex, [
-            'models' => Model::where('akses', 'wali')->where('akses', '<>', '-')
+            'models' => Model::wali()->where('akses', '<>', '-')
                 ->latest()
                 ->paginate(50),
                 'routePrefix' => $this->routePrefix,
@@ -42,7 +43,8 @@ class WaliController extends Controller
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN',
-            'title' => 'Tambah ' . $this->accessClass
+            'title' => 'Tambah ' . $this->accessClass,
+            'access_menu' => $this->accessClass
         ];
         return view('operator.' . $this->viewCreate, $data);
     }
@@ -77,7 +79,11 @@ class WaliController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('operator.' . $this->viewShow, [
+            'model' => Model::find($id),
+            'title' => 'Detail Data Wali Murid',
+            'access_menu' => $this->accessClass
+        ]);
     }
 
     /**
@@ -93,7 +99,8 @@ class WaliController extends Controller
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
             'button' => 'UPDATE',
-            'title' => 'Ubah ' . $this->accessClass
+            'title' => 'Ubah ' . $this->accessClass,
+            'access_menu' => $this->accessClass
         ];
         return view('operator.' . $this->viewEdit, $data);
     }
@@ -136,7 +143,7 @@ class WaliController extends Controller
      */
     public function destroy($id)
     {
-        $model = Model::where('akses', 'wali')->find($id);
+        $model = Model::wali()->find($id);
 
         $model->delete();
         flash('Data berhasil dihapus');

@@ -42,7 +42,8 @@ class UserController extends Controller
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN',
-            'title' => 'Tambah ' . $this->accessClass
+            'title' => 'Tambah ' . $this->accessClass,
+            'access_menu' => $this->accessClass
         ];
         return view('operator.' . $this->viewCreate, $data);
     }
@@ -93,7 +94,8 @@ class UserController extends Controller
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
             'button' => 'UPDATE',
-            'title' => 'Ubah ' . $this->accessClass
+            'title' => 'Ubah ' . $this->accessClass,
+            'access_menu' => $this->accessClass
         ];
         return view('operator.' . $this->viewEdit, $data);
     }
