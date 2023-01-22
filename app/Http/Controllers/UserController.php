@@ -10,9 +10,10 @@ class UserController extends Controller
     private $viewIndex = 'user_index';
     private $viewCreate = 'user_form';
     private $viewEdit = 'user_form';
+    private $viewShow = 'user_show';
     private $routePrefix = 'user';
 
-    private $accessClass = 'Data User';
+    private $accessClass = 'User';
     
     /**
      * Display a listing of the resource.
@@ -42,7 +43,7 @@ class UserController extends Controller
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN',
-            'title' => 'Tambah ' . $this->accessClass,
+            'title' => 'Tambah Data User',
             'access_menu' => $this->accessClass
         ];
         return view('operator.' . $this->viewCreate, $data);
@@ -78,7 +79,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('operator.' . $this->viewShow, [
+            'model' => Model::find($id),
+            'title' => 'Detail Data User',
+            'title' => 'Detail Data User',
+            'access_menu' => $this->accessClass
+        ]);
     }
 
     /**

@@ -13,7 +13,7 @@ class WaliController extends Controller
     private $viewShow = 'user_show';
     private $routePrefix = 'wali';
 
-    private $accessClass = 'Data Wali Murid';
+    private $accessClass = 'Wali Murid';
     
     /**
      * Display a listing of the resource.
@@ -43,7 +43,7 @@ class WaliController extends Controller
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN',
-            'title' => 'Tambah ' . $this->accessClass,
+            'title' => 'Tambah Data Wali Murid',
             'access_menu' => $this->accessClass
         ];
         return view('operator.' . $this->viewCreate, $data);

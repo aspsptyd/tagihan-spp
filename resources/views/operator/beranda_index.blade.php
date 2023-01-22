@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    Selamat Datang di Sistem Informasi Tagihan SPP
                 </div>
             </div>
         </div>
