@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SiswaStoreRequest;
+use App\Http\Requests\SiswaUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Siswa as ModelSiswa;
 use App\Models\User as ModelUser;
@@ -45,17 +47,9 @@ class SiswaController extends Controller
         return view('operator.' . $this->viewCreate, $data);
     }
 
-    public function store(Request $request)
+    public function store(SiswaStoreRequest $request)
     {
-        $requestData = $request->validate([
-            'wali_id' => 'nullable',
-            'nama' => 'required',
-            'nisn' => 'required|unique:siswas',
-            'jurusan' => 'required',
-            'kelas' => 'required',
-            'angkatan' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:5000'
-        ]);
+        $requestData = $request->validated();
 
         if ($request->hasFile('foto')) {
             $requestData['foto'] = $request->file('foto')->store('public');
@@ -95,17 +89,9 @@ class SiswaController extends Controller
         return view('operator.' . $this->viewEdit, $data);
     }
 
-    public function update(Request $request, $id)
+    public function update(SiswaUpdateRequest $request, $id)
     {
-        $requestData = $request->validate([
-            'wali_id' => 'nullable',
-            'nama' => 'required',
-            'nisn' => 'required|unique:siswas,nisn,' . $id,
-            'jurusan' => 'required',
-            'kelas' => 'required',
-            'angkatan' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:5000'
-        ]);
+        $requestData = $request->validated();
 
         $model = ModelSiswa::find($id);
 
