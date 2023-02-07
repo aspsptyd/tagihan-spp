@@ -15,6 +15,7 @@
                 <div class="card-body">
                     <img src="{{ \Storage::url($model->foto ?? 'images/man.png') }}" width="165"/>
                     <h5 class="mt-4" style="text-align: center">{{ $model->nama }}</h5>
+                    <p style="text-align:center; margin-top:-15px">As Student</p>
 
                     <div class="divider">
                         <div class="divider-text">Prestasi</div>

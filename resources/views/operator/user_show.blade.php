@@ -15,6 +15,13 @@
                 <div class="card-body">
                     <img src="{{ \Storage::url($model->foto ?? 'images/no-image.png') }}" width="165"/>
                     <h5 class="mt-4" style="text-align: center">{{ $model->name }}</h5>
+                    @if ($model->akses == 'wali')
+                        <p style="text-align:center; margin-top:-15px">As Parent</p>
+                    @elseif($model->akses == 'operator')
+                        <p style="text-align:center; margin-top:-15px">As Operator</p>
+                    @else
+                        <p style="text-align:center; margin-top:-15px">As Admin</p>
+                    @endif
                 </div>
                 </div>
             </div>
@@ -44,7 +51,7 @@
                     </div>
                 </div>
                
-                @if ($model->akses == 'operator')
+                @if ($model->akses == 'operator' || $model->akses == 'admin')
                     {{-- Tidak memunculkan data anak sebab Operator --}}
                 @else
                     {{-- Muncul data Anak Jika Akses Wali --}}

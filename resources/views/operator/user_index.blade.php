@@ -35,9 +35,10 @@
                                                 'method' => 'DELETE',
                                                 'onsubmit' => 'return confirm("Yakin ingin menghapus data ini?")'
                                             ]) !!}
-    
                                             <a href="{{ route($routePrefix . '.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>&emsp;Edit</a>
+                                            &nbsp;
                                             <a href="{{ route($routePrefix . '.show', $item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-user"></i>&emsp;Details</a>
+                                            &nbsp;
                                             <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&emsp;Hapus</button>
                                             {!! Form::close() !!} 
                                         </td>
